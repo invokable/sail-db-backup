@@ -43,12 +43,21 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function defineEnvironment($app): void
     {
-        $app['config']->set('database.connections.mysql', [
-            'host' => '127.0.0.1',
-            'port' => '3306',
-            'database' => 'test',
-            'username' => 'user',
-            'password' => 'password',
+        $app['config']->set('database.connections', [
+            'mysql' => [
+                'host' => '127.0.0.1',
+                'port' => '3306',
+                'database' => 'test',
+                'username' => 'user',
+                'password' => 'password',
+            ],
+            'mysql2' => [
+                'host' => '127.0.0.1',
+                'port' => '3306',
+                'database' => 'test2',
+                'username' => 'user',
+                'password' => 'password',
+            ],
         ]);
     }
 }

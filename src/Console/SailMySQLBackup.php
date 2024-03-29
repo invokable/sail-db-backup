@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Revolution\Sail\Backup\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Process;
 
@@ -18,7 +15,7 @@ class SailMySQLBackup extends Command
      *
      * @var string
      */
-    protected $signature = 'sail:backup:mysql {--path=mysql_backup}';
+    protected $signature = 'sail:backup:mysql {--path=.backup/mysql_backup} {--connection=mysql}';
 
     /**
      * The console command description.
@@ -44,23 +41,19 @@ class SailMySQLBackup extends Command
      */
     public function handle(): int
     {
-        $host = Config::get('database.connections.mysql.host');
-        $port = Config::get('database.connections.mysql.port');
-        $username = Config::get('database.connections.mysql.username');
-        $password = Config::get('database.connections.mysql.password');
-        $database = Config::get('database.connections.mysql.database');
-
-        $now = Carbon::now()->format('YmdHi');
-        $path = App::basePath($this->option('path'));
+        $config = config('database.connections.'.$this->option('connection'));
+        $database = data_get($config, 'database');
+        $now = now()->format('YmdHi');
+        $path = base_path($this->option('path'));
 
         File::ensureDirectoryExists($path);
 
         $cmd = [
             'mysqldump',
-            "--host=$host",
-            "--port=$port",
-            "--user=$username",
-            "--password=$password",
+            '--host='.data_get($config, 'host'),
+            '--port='.data_get($config, 'port'),
+            '--user='.data_get($config, 'username'),
+            '--password='.data_get($config, 'password'),
             $database,
             "--result-file=$path/$database-$now.sql",
         ];
