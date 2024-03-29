@@ -11,7 +11,7 @@ composer require revolution/sail-db-backup --dev
 
 ### Uninstall
 ```shell
-composer remove revolution/sail-db-backup
+composer remove revolution/sail-db-backup --dev
 ```
 No config file.
 
