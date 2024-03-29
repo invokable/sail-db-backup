@@ -22,10 +22,7 @@ class BackupTest extends TestCase
             ->assertSuccessful()
             ->expectsOutput('Backing up mysql database test-202302260000.sql');
 
-        Process::assertRan(fn (
-            PendingProcess $process,
-            ProcessResult  $result,
-        ) => collect($process->command)->contains('--result-file='.base_path('.backup/mysql_backup/test-202302260000.sql')));
+        Process::assertRan(fn (PendingProcess $process, ProcessResult $result) => collect($process->command)->contains('--result-file='.base_path('.backup/mysql_backup/test-202302260000.sql')));
     }
 
     public function test_backup_with_path()
@@ -38,10 +35,7 @@ class BackupTest extends TestCase
             ->assertSuccessful()
             ->expectsOutput('Backing up mysql database test-202302260000.sql');
 
-        Process::assertRan(fn (
-            PendingProcess $process,
-            ProcessResult  $result,
-        ) => collect($process->command)->contains('--result-file='.base_path('mysql/test-202302260000.sql')));
+        Process::assertRan(fn (PendingProcess $process, ProcessResult $result) => collect($process->command)->contains('--result-file='.base_path('mysql/test-202302260000.sql')));
     }
 
     public function test_backup_with_connection()
@@ -54,9 +48,6 @@ class BackupTest extends TestCase
             ->assertSuccessful()
             ->expectsOutput('Backing up mysql database test2-202403290000.sql');
 
-        Process::assertRan(fn (
-            PendingProcess $process,
-            ProcessResult  $result,
-        ) => collect($process->command)->contains('--result-file='.base_path('.backup/mysql_backup/test2-202403290000.sql')));
+        Process::assertRan(fn (PendingProcess $process, ProcessResult $result) => collect($process->command)->contains('--result-file='.base_path('.backup/mysql_backup/test2-202403290000.sql')));
     }
 }
