@@ -7,7 +7,7 @@ namespace Tests;
 use Illuminate\Foundation\Application;
 use Revolution\Sail\Backup\SailBackupServiceProvider;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
      * Load package service provider.
