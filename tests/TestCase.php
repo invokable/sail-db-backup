@@ -13,7 +13,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
      * Load package service provider.
      *
      * @param  Application  $app
-     * @return array
      */
     protected function getPackageProviders($app): array
     {
@@ -26,7 +25,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
      * Load package alias.
      *
      * @param  Application  $app
-     * @return array
      */
     protected function getPackageAliases($app): array
     {
@@ -39,7 +37,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
      * Define environment setup.
      *
      * @param  Application  $app
-     * @return void
      */
     protected function defineEnvironment($app): void
     {
