@@ -8,3 +8,4 @@
 composer.lock export-ignore
 phpunit.xml export-ignore
 /tests export-ignore
+pint.json export-ignore
