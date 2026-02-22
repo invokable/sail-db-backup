@@ -1,8 +1,8 @@
 # Backup Sail's Database
 
 ## Requirements
-- PHP >= 8.2
-- Laravel >= 11.0
+- PHP >= 8.3
+- Laravel >= 12.0
 
 ## Installation
 ```shell

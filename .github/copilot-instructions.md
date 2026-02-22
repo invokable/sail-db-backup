@@ -14,14 +14,13 @@ The `invokable/sail-db-backup` repository provides a Laravel package that simpli
 **Package Details:**
 - **Namespace:** `Revolution\Sail\Backup`
 - **Main Command:** `sail:backup:mysql`
-- **Requirements:** PHP ≥8.2, Laravel ≥11.0
 - **License:** MIT
 
 ## Setup Instructions
 
 ### Prerequisites
-- PHP 8.2 or higher
-- Laravel 11.0 or higher
+- PHP 8.3 or higher
+- Laravel 12.0 or higher
 - Laravel Sail development environment
 - Composer package manager
 
